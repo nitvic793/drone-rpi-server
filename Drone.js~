@@ -1,0 +1,20 @@
+var arDrone = require('ar-drone');
+var client  = arDrone.createClient();
+
+module.exports.takeoff = function(){
+    client.takeoff();
+}
+
+module.exports.land = function(){
+    client.stop();
+    client.land();
+}
+
+module.exports.move = function(move){
+    console.log(move);
+    if(move.left){
+	client.left(move.left);
+    }
+
+}
+

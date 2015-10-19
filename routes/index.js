@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var arDrone = require('ar-drone');
-var client  = arDrone.createClient();
+var client = require('../Drone');
 
 /* GET home page. Takes off and lands on  */
 router.get('/', function(req, res, next) {
@@ -27,6 +26,28 @@ router.get('/land', function(req, res, next) {
     res.send({ title: 'Express' });
 });
 
+router.get('/move', function(req, res, next) {
+    var left,right,up,down,front,back,clockwise,counterClock;
+    left = req.query['left'];
+    right = req.query['right'];
+    up = req.query['up'];
+    down = req.query['down'];
+    front = req.query['front'];
+    back = req.query['back'];
+    clockwise = req.query['cwise'];
+    counterClock = req.query['ccwise'];
+    var move = {
+	left:left,
+	right:right,
+	up:up,
+	down:down,
+	front:front,
+	back:back,
+	cwise:clockwise,
+	ccwise:counterClock}; 
+    client.move(move);	
+    res.send(move);
+});
 
 
 module.exports = router;

@@ -14,6 +14,18 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+router.get('/takeoff', function(req, res, next) {
+	client.takeoff();
+	console.log("Take off");	
+  res.render('index', { title: 'Express' });
+});
+
+router.get('/land', function(req, res, next) {
+	client.land();
+	console.log("Take off");	
+  res.render('index', { title: 'Express' });
+});
+
 
 
 module.exports = router;

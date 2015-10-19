@@ -10,20 +10,21 @@ router.get('/', function(req, res, next) {
 		this.stop();
 		this.land();
 	});
-	console.log("Take off and land");	
-  res.render('index', { title: 'Express' });
+	console.log("Take off and land");
+    res.send("Take off and land");
+ // res.render('index', { title: 'Express' });
 });
 
 router.get('/takeoff', function(req, res, next) {
 	client.takeoff();
 	console.log("Take off");	
-  res.render('index', { title: 'Express' });
+    res.send({ title: 'Express' });
 });
 
 router.get('/land', function(req, res, next) {
 	client.land();
 	console.log("Take off");	
-  res.render('index', { title: 'Express' });
+    res.send({ title: 'Express' });
 });
 
 
